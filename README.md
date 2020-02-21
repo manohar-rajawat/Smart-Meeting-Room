@@ -28,3 +28,11 @@
 ![Salesforce Cloud](https://jaimahakal-dev-ed.my.salesforce.com/img/seasonLogos/Spring_20_175x65.png)
 
 > You can use saleforce iot cloud application for free. I have setup created custom object, context, orchestrtion in salesforce.
+
+## Coding Background
+
+```python
+    WINDOW_DETECTION = 5    # Number of loops a camera will check to take decision on the occupancy
+    PRESENCE_THRESHOLD = 3  # Minimum Presence should be this to mark room as occupied else vacant
+    VACANCY_THRESHOLD = 1   # Room will be marked as vacant after this threshold meets
+```
