@@ -27,7 +27,7 @@
 
 ![Salesforce Cloud](https://jaimahakal-dev-ed.my.salesforce.com/img/seasonLogos/Spring_20_175x65.png)
 
-> You can use saleforce iot cloud application for free. I have setup created custom object, context, orchestrtion in salesforce.
+> You can use saleforce iot cloud application for free. I have setup custom object, context, orchestrtion in salesforce.
 
 ## Coding Background
 
