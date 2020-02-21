@@ -15,6 +15,7 @@
 ### Hardware
 * Raspberry Pi 3 Model b+
 * Pi Camera
+<img src="https://www.raspberrypi.org/app/uploads/2011/10/Raspi-PGB001.png" height="100" width="100">
 
 ### Libraries
 * OpenCV
