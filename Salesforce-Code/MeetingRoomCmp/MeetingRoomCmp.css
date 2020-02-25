@@ -1,0 +1,65 @@
+.THIS .statusbutton {
+    width: 100%;
+    height: 50px;
+}
+
+.THIS .round_icon{
+    border-radius: 25px;
+}
+
+.THIS .info {
+    font-size: 10px;
+    color: rgb(0,95,178);
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.THIS .slds-border_bottom{
+    padding-bottom: 5px;
+}
+
+.THIS .icon_setting{
+	margin-right: 10px    
+}
+
+.THIS .slds-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.THIS .uiBox {
+    padding-bottom: 5px;
+}
+
+.THIS .NameClass{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.THIS .cls-green {
+    color: green;
+}
+
+.THIS .cls-red {
+    color: red;
+}
+
+.THIS .uiBoxInside {
+    padding: 10px;
+    height: 5rem;
+}
+
+.THIS .spinner {
+    position: absolute;
+}
+
+.THIS .outerBox {
+	position:relative;
+}
+
+.THIS.center {
+    margin: auto;
+    /*width: 50%;
+    border: 3px solid #4e52c7;
+    padding: 20px;*/
+}
