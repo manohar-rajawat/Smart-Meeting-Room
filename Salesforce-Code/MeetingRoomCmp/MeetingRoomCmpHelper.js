@@ -17,10 +17,16 @@
     
     showError: function(component,event,helper)
     {
-        
         let message_toast = "Sorry ! Notification can not be set for this room";
         this.showToast(component, event, helper, message_toast, "error");
     },
+    
+    showAlreadyNotificationSet: function(component,event,helper,roomName)
+    {
+        let message_toast = "Hi ! You have already selected notification mode for "+roomName;
+        this.showToast(component, event, helper, message_toast, "info");
+    },
+    
     
     
     NotificationOn: function(component,event,helper,roomName,roomId) {
@@ -31,9 +37,23 @@
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
-                if(response.getReturnValue() != null)
+                let returnValue = response.getReturnValue();
+                if(returnValue != null)
                 {
-                    this.showSuccess(component,event,helper,roomName);
+                    if(returnValue != 'Exists')
+                    {
+                        let uniqueRoomId = 'room'+roomId;
+                        let notification = document.getElementById(uniqueRoomId);
+                        if(notification)
+                        {
+                            notification.dataset.isnotificationmodeon=true;
+                        }
+                        this.showSuccess(component,event,helper,roomName);
+                    }
+                    else if (returnValue == 'Exists')
+                    {
+                        this.showAlreadyNotificationSet(component,event,helper,roomName);
+                    }
                 }
                 else{
                     this.showError(component,event,helper);
