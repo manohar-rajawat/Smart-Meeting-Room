@@ -12,7 +12,6 @@ import sys
 LOGIN_DICT =  {'users':{}}
 LOGIN_DICT.get('users').update({'SA':{'Email':'YourEmail','Password':'YourPassword','Token':'YourToken'}})
 LOGIN_AS = 'SA'
-SA_ID = '0050o00000WyJiR'
 
 
 class SalesforceApp:
