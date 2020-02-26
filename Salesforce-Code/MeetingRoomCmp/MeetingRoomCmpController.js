@@ -31,23 +31,31 @@
     {
         let roomName = event.currentTarget.dataset.roomname;
         let roomId = event.currentTarget.dataset.roomid;
-        if(roomName)
+        let isnotificationset = event.currentTarget.dataset.isnotificationmodeon;
+        if(isnotificationset == "false")
         {
-            component.set("v.meetingRoomsNotificationName",roomName); 
+            if(roomName)
+            {
+                component.set("v.meetingRoomsNotificationName",roomName); 
+            }
+            else
+            {
+                component.set("v.meetingRoomsNotificationName",'');
+            }
+            if(roomId)
+            {
+                component.set("v.meetingRoomsNotificationId",roomId); 
+            }
+            else
+            {
+                component.set("v.meetingRoomsNotificationId",'');
+            }
+            component.set("v.isModalOpen",true); 
         }
-        else
+        else if(isnotificationset == "true")
         {
-            component.set("v.meetingRoomsNotificationName",'');
+            helper.showAlreadyNotificationSet(component,event,helper,roomName);
         }
-        if(roomId)
-        {
-            component.set("v.meetingRoomsNotificationId",roomId); 
-        }
-        else
-        {
-            component.set("v.meetingRoomsNotificationId",'');
-        }
-        component.set("v.isModalOpen",true);
     },
     
     closeModel: function(component, event, helper) {
