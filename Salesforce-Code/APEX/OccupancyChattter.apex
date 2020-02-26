@@ -51,7 +51,7 @@ ConnectApi.FeedItem fi = (ConnectApi.FeedItem) ConnectApiHelper.postFeedItemWith
                                 System.debug('Account fields that affected this error: ' + err.getFields());
                             }
                         }
-                    }
+                    } 
                     if(notificationList.size() > 0)
                         delete notificationList; //Each time when notificaion is sent to the user we delete the notification record created by user.
                 }
