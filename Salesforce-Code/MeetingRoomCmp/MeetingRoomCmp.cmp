@@ -27,10 +27,11 @@
                             <div class="slds-col slds-size_1-of-2">
                                 <aura:if isTrue="{!item.isEquipped == True}">
                                     <div class="slds-float_right">
-                                        <div data-roomid="{!item.meetingRoomId}" data-roomname="{!item.name}" onclick="{!c.showBox}">
+                                        <div class="notification_button" id="{!'room'+item.meetingRoomId}" data-isnotificationmodeon="false" data-roomid="{!item.meetingRoomId}" data-roomname="{!item.name}" onclick="{!c.showBox}">
                                             <lightning:icon iconName="custom:custom53" alternativeText="Notify!" class="round_icon icon_setting"/>
-                                            <lightning:icon iconName="standard:groups" alternativeText="Occupied!" class="round_icon" />
                                         </div>
+                                        <lightning:icon iconName="standard:groups" alternativeText="Occupied!" class="round_icon" />
+                                        
                                     </div>
                                     <aura:set attribute="else">
                                         <lightning:icon iconName="standard:task2" alternativeText="Vacant!" class="round_icon slds-float_right"/>
@@ -62,7 +63,9 @@
                     </header>
                     <!--Modal/Popup Box Body Starts here-->
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                        <p><b>Would you like to be notified when this room becomes available?
+                        <p>
+                            <b>
+                                Would you like to be notified when this room becomes available?
                             </b>
                         </p>
                     </div>
