@@ -3,6 +3,10 @@
     height: 50px;
 }
 
+.THIS .notification_button{
+	display: inline;    
+}
+
 .THIS .round_icon{
     border-radius: 25px;
 }
