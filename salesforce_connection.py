@@ -19,15 +19,15 @@ class SalesforceApp:
  def __init__(self):
   self.platformEventUrl = "/services/data/v47.0/sobjects/Meeting_Room__e"
   self.params = {"grant_type": "password",
-        "client_id": "3MVG9pe2TCoA1Pf7QaVQAlbbMXsg8iNI0ZeKL._F3UKKLdrbegx2Mfj_s_4M1UtdT01Pr7M3lI8FrLf_X3J1m",
-        "client_secret": "577BDA6445FC6298CEE5F201E72D47880EE72394C8C18597FA2C61C922C840FE",
+        "client_id": "YourClientId",
+        "client_secret": "YourClientSecret",
         "username": LOGIN_DICT.get('users').get(LOGIN_AS).get('Email'),
         "password": LOGIN_DICT.get('users').get(LOGIN_AS).get('Password')+LOGIN_DICT.get('users').get(LOGIN_AS).get('Token')
         }
   self.tokenUrl = "https://login.salesforce.com/services/oauth2/token"
   self.statusCode = 0
   self.req = requests.post(self.tokenUrl,params=self.params)
-  #self.sf = Salesforce(username="manoharsingh1920@gmail.com",password="Ilovemymomalot10@",security_token='XArZ9470S3G7budd3VvYgT9C')
+  
   if self.req.status_code == 200:
    self.statusCode = 200
    self.access_token = self.req.json().get("access_token")
