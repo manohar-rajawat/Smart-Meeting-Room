@@ -4,6 +4,16 @@
 from simple_salesforce import Salesforce
 import requests
 import json
+import pytz
+import time
+import datetime
+import sys
+
+LOGIN_DICT =  {'users':{}}
+LOGIN_DICT.get('users').update({'SA':{'Email':'YourEmail','Password':'YourPassword','Token':'YourToken'}})
+LOGIN_AS = 'SA'
+SA_ID = '0050o00000WyJiR'
+
 
 class SalesforceApp:
  def __init__(self):
@@ -11,16 +21,21 @@ class SalesforceApp:
   self.params = {"grant_type": "password",
         "client_id": "3MVG9pe2TCoA1Pf7QaVQAlbbMXsg8iNI0ZeKL._F3UKKLdrbegx2Mfj_s_4M1UtdT01Pr7M3lI8FrLf_X3J1m",
         "client_secret": "577BDA6445FC6298CEE5F201E72D47880EE72394C8C18597FA2C61C922C840FE",
-        "username": "manoharsingh1920@gmail.com",
-        "password": "Ilovemymomalot10@XArZ9470S3G7budd3VvYgT9C"}
+        "username": LOGIN_DICT.get('users').get(LOGIN_AS).get('Email'),
+        "password": LOGIN_DICT.get('users').get(LOGIN_AS).get('Password')+LOGIN_DICT.get('users').get(LOGIN_AS).get('Token')
+        }
   self.tokenUrl = "https://login.salesforce.com/services/oauth2/token"
   self.statusCode = 0
-  req = requests.post(self.tokenUrl,params=self.params)
-  if req.status_code == 200:
+  self.req = requests.post(self.tokenUrl,params=self.params)
+  #self.sf = Salesforce(username="manoharsingh1920@gmail.com",password="Ilovemymomalot10@",security_token='XArZ9470S3G7budd3VvYgT9C')
+  if self.req.status_code == 200:
    self.statusCode = 200
-   self.access_token = req.json().get("access_token")
-   self.instance_url = req.json().get("instance_url")
+   self.access_token = self.req.json().get("access_token")
+   self.instance_url = self.req.json().get("instance_url")
    self.createHeader()
+  else:
+   print ("Couldn't connect to Salesforce")
+   sys.exit(0)
 
  def createHeader(self):
   self.headers = {'Content-Type': 'application/json','Authorization': 'Bearer %s' % self.access_token}
@@ -60,3 +75,15 @@ class SalesforceApp:
   else:
    print ("[EVENT] The Event couldn't be published !!!")
    return False
+
+#Creating occupancy record
+ def createOccupancyRecord(self,status,meetingRoom,changedTime):
+  oc_time = time.strftime("%Y-%m-%dT%H:%M:%SZ", changedTime)
+  createdOc = self.sf.Occupancy_Record__c.create({'Meeting_Room_Id__c':meetingRoom,'Occupancy_Changed_At__c':oc_time,'Occupancy_Status__c':status})
+  print ("The occupancy record is created for meeting room {} with status {}: ".format(meetingRoom,status));
+
+ def getRecordId(self,meetingRoom):
+  query = "SELECT Id FROM Meeting_Object__c WHERE Meeting_Room_Id__c = "+"'"+meetingRoom+"'"
+  record = self.sf.query(query)
+  if len(record['records']) > 0:
+   return record['records'][0]['Id']
