@@ -1,6 +1,6 @@
 # Smart Meeting Room
 
-*This scans the meeting room and update the status on Salesforce cloud. Then mobile application can be used to check the status of the meeting room (Occupied or Vacant)*
+*The python script scans the meeting room and update the status on Salesforce cloud. Then mobile application can be used to check the status of the meeting room (Occupied or Vacant)*
 
 ## Project Structure
 
