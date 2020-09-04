@@ -25,7 +25,7 @@
 ### Cloud
 * Salesforce IoT
 
-![Salesforce Cloud](https://jaimahakal-dev-ed.my.salesforce.com/img/seasonLogos/Spring_20_175x65.png)
+![Salesforce Cloud](https://c1.sfdcstatic.com/content/dam/www/ocms/common/assets/images/form/salesforce-logo-122x86.png)
 
 > You can use saleforce iot cloud application for free. I have setup custom object, context, orchestrtion in salesforce.
 
